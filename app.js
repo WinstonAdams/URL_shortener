@@ -4,15 +4,14 @@ const exphbs = require('express-handlebars')
 
 //* 自己設定的檔案
 require('./config/mongoose')
+const routes = require('./routes')
 
 const app = express()
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
-app.get('/', (req, res) => {
-  res.render('index')
-})
+app.use(routes)
 
 app.listen(3000, () => {
   console.log('App is running on http://localhost:3000')
