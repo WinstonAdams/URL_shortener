@@ -1,5 +1,7 @@
 const express = require('express')
 
+require('./config/mongoose')
+
 const app = express()
 
 app.get('/', (req, res) => {
