@@ -1,9 +1,31 @@
 <div>
-  <form action="/URL_shortener" method="POST">
-    <input type="text" name="URL" placeholder="http://" {{#if URL}} value="{{ URL }}" {{/if}} required>
+  <form action="/URL_shortener" method="POST" class="needs-validated" novalidate>
+    <div class="position-relative">
+      <input type="url" name="URL" class="form-control" placeholder="http://" {{#if URL}} value="{{ URL }}" {{/if}}
+        required>
+      {{!-- 防止表單送出後，提示使用者 --}}
+      <div class="invalid-feedback">
+        請輸入正確網址
+      </div>
+    </div>
     <button type="submit">縮址</button>
   </form>
 </div>
+
 <div>
   <span>{{ shortURL }}</span>
 </div>
+
+<script>
+  const form = document.querySelector('.needs-validated')
+
+  // 若使用者沒有輸入內容，就按下了送出鈕，需要防止表單送出
+  form.addEventListener('submit', event => {
+    if (!form.checkValidity()) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+
+    form.classList.add('was-validated')
+  })
+</script>

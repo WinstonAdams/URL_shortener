@@ -4,8 +4,7 @@ const router = express.Router()
 const URL_shortener = require('../../models/URL_shortener')
 const generateShortURL = require('../../generate_shortURL')
 
-router.post('/URL_shortener', (req, res) => {
-  //!
+router.post('/', (req, res) => {
   const URL = req.body.URL
   const shortURL = generateShortURL()
 
@@ -24,7 +23,7 @@ router.post('/URL_shortener', (req, res) => {
     .catch(err => console.log(err))
 })
 
-router.get('/URL_shortener/:garbled', (req, res) => {
+router.get('/:garbled', (req, res) => {
   const garbled = req.params.garbled
   // 在所有的 URLItem 中，找到 shortURL 有包含特定字串的 URLItem
   URL_shortener.findOne({ shortURL: { $regex: garbled } })
