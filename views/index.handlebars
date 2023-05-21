@@ -1,6 +1,6 @@
 <div>
   <form action="/URL_shortener" method="POST">
-    <input type="text" name="URL" placeholder="http://" required>
+    <input type="text" name="URL" placeholder="http://" {{#if URL}} value="{{ URL }}" {{/if}} required>
     <button type="submit">縮址</button>
   </form>
 </div>

@@ -12,7 +12,7 @@ function generateShortURL() {
     garbled += collection[index]
   }
 
-  const shortURL = 'http://URL_shortener/' + garbled
+  const shortURL = 'http://localhost:3000/URL_shortener/' + garbled
   return shortURL
 }
 
