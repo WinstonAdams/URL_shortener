@@ -1,6 +1,6 @@
 # URL_shortener
 
-![Index page about URL Shortener](./URL Shortener.jpg)
+![Index page about URL Shortener](URL Shortener.jpg)
 
 ## 介紹
 
