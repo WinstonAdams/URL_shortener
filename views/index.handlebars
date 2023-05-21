@@ -3,7 +3,7 @@
     <div class="position-relative">
       <input type="url" name="URL" class="form-control" placeholder="http://" {{#if URL}} value="{{ URL }}" {{/if}}
         required>
-      {{!-- 防止表單送出後，提示使用者 --}}
+      {{!-- 在防止表單送出後出現，提示使用者 --}}
       <div class="invalid-feedback">
         請輸入正確網址
       </div>
@@ -12,14 +12,19 @@
   </form>
 </div>
 
+{{#if shortURL}}
 <div>
-  <span>{{ shortURL }}</span>
+  <div id="shortURL">{{ shortURL }}</div>
+  {{!-- 點擊按鈕會執行 function copy() --}}
+  <button type="button" onclick="copy()">Copy</button>
 </div>
+{{/if}}
+
+
 
 <script>
   const form = document.querySelector('.needs-validated')
-
-  // 若使用者沒有輸入內容，就按下了送出鈕，需要防止表單送出
+  // 若使用者沒有輸入內容，就按下了送出鈕，防止表單送出
   form.addEventListener('submit', event => {
     if (!form.checkValidity()) {
       event.preventDefault()
@@ -28,4 +33,12 @@
 
     form.classList.add('was-validated')
   })
+
+  function copy() {
+    const shortURL = document.querySelector('#shortURL')
+    // 將 shortURL 的內容複製到使用者的剪貼簿
+    navigator.clipboard.writeText(shortURL.textContent)
+      .then(() => alert('copied'))
+      .catch(err => console.log(err))
+  }
 </script>

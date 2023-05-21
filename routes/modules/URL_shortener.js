@@ -13,6 +13,7 @@ router.post('/', (req, res) => {
     .then(URLItem => {
       // 若 .findOne(req.body) 沒有找到，URLItem 為 null
       if (URLItem) {
+        // 輸入相同網址時，產生一樣的縮址
         res.render('index', { shortURL: URLItem.shortURL, URL })
       } else {
         URL_shortener.create({ URL, shortURL })
