@@ -1,6 +1,6 @@
 # URL_shortener
 
-![Index page about URL Shortener](./URL Shortener.jpg)
+![image](https://github.com/WinstonAdams/URL_shortener/blob/f42db3ffcca3c8f975381fd0a98105c7dce3120e/URL%20Shortener.jpg)
 
 ## 介紹
 
